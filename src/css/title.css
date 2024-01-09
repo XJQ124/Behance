@@ -1,0 +1,73 @@
+.title {
+  height: 33px;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+.note{
+  height: 30px;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+.button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+.vertical-Line{
+  border-left: solid 1px #e8e8e8;
+  height: 20px;
+  margin-left: 8px;
+  margin-top: 8px;
+  width: 16px;
+}
+.roundButton {
+  background-color: black;
+  color: white;
+  font-weight: bold;
+}
+.otherButtton{
+  color:black;
+  font-weight: bold;
+}
+/* 第一个长方形内容 */
+.rectangle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 110px;
+  height: 36px;
+  border-radius: 4px;
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.1);;
+  font-size: 14px;
+  font-weight: bold;
+
+}
+/* 其他长方形内容 */
+.rectangle-other{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 36px;
+  border-radius: 4px;
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  font-size: 14px;
+  font-weight: bold;
+
+}
+.outer{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+
+}
+.rectangle-container {
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+}
+

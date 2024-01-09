@@ -1,0 +1,12 @@
+.buttom {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    height: 30px;
+    font-size: 11px;
+    background-color: #f6f6f6;
+}

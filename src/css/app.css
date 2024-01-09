@@ -1,0 +1,14 @@
+
+.fixed-content {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.image-content {
+    margin-top:200px;
+    overflow: auto;
+    max-height: calc(100vh - 200px);
+}
+
