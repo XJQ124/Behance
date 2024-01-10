@@ -36,7 +36,7 @@ const Navigation = () => {
 
     return(
         <>
-        <div style={{ display: 'flex', justifyContent: 'felx-start' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
 
             <img src={TitleImage} alt="title" className='title' />
 
