@@ -38,9 +38,13 @@ const Navigation = () => {
     return(
         <>
         <div style={{ display: 'flex', justifyContent: 'felx-start' }}>
+
             <img src={TitleImage} alt="title" className='title' />
+
                 <Tabs defaultActiveKey="1" items={items} onChange={onChange} style={{ marginTop: '3px', marginLeft: '20px' }} />
+
                 <img src={NoteImage} alt='note' className='note' style={{marginLeft:'570px'}}/>
+                
                 <Button shape='round' style={{ color: '#1356f9'}} className='button'>登录</Button>
                 <Button type="primary" shape="round" className='button'>注册</Button>
 

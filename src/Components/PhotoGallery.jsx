@@ -1,9 +1,11 @@
 import React from 'react';
-import { Row, Col } from 'antd'; 
+import { Row, Col,Button} from 'antd'; 
+import { FolderFilled } from '@ant-design/icons';
 import '../css/image.css'
 import _ from 'lodash';
 import Good from '../images/good.jpg'
 import View from '../images/view.jpg'
+import Label from '../svg/label.svg'
 
 const photos = [
     { src: require('../photo/image1.webp'),title:'BMW M3 Competition',author:'Jack Schroeder', likes:161, views: '1.9千'},
@@ -39,8 +41,17 @@ const PhotoGallery = () => {
                     {_.map(photos, (photo, index) => (
                         <Col span={6} key={index}>
                             <div >
-                                <div className='image-container '>
-                                    <img src={photo.src} alt={'这是图片'} style={{ width: '100%', borderRadius: '4px' }} />
+                                <div className='mark'>
+                                    <div>
+                                        <img src={photo.src} alt={'这是图片'} style={{ width: '100%', borderRadius: '4px' }} />
+                                        <Button  shape='round' className='button-mark' >
+                                            <FolderFilled />
+                                            <div style={{ writingMode: 'vertical-rl' }}>保存</div>
+                                        </Button>
+                                        <img src={Label} alt={'图标'} className='label-mark'/>
+                                        
+                                    </div>
+                                
                                 </div>
         
                                 <div className='layout'>

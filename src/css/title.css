@@ -19,7 +19,7 @@
   border-left: solid 1px #e8e8e8;
   height: 20px;
   margin-left: 8px;
-  margin-top: 8px;
+  margin-top: 8px;  
   width: 16px;
 }
 .roundButton {
@@ -30,6 +30,18 @@
 .otherButtton{
   color:black;
   font-weight: bold;
+}
+
+.outer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.rectangle-container {
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
 }
 /* 第一个长方形内容 */
 .rectangle {
@@ -59,15 +71,3 @@
   font-weight: bold;
 
 }
-.outer{
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-
-}
-.rectangle-container {
-  display: flex;
-  justify-content: space-between;
-  width: 50%;
-}
-
