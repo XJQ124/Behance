@@ -32,7 +32,6 @@ const items = [
     },
 ];
 
-
 const Navigation = () => {
 
     return(
@@ -44,7 +43,7 @@ const Navigation = () => {
                 <Tabs defaultActiveKey="1" items={items} onChange={onChange} style={{ marginTop: '3px', marginLeft: '20px' }} />
 
                 <img src={NoteImage} alt='note' className='note' style={{marginLeft:'570px'}}/>
-                
+
                 <Button shape='round' style={{ color: '#1356f9'}} className='button'>登录</Button>
                 <Button type="primary" shape="round" className='button'>注册</Button>
 
@@ -72,25 +71,25 @@ const Navigation = () => {
 
             <div className='rectangle-container' style={{marginTop:'25px',marginBottom:'25px',marginLeft:'15px'}}>
                 <div className='rectangle' >
-                    <RocketOutlined /> &nbsp;&nbsp;创意领域&nbsp;&nbsp;<CaretDownOutlined style={{ fontSize: '8px' }} />
+                    <RocketOutlined style={{marginRight:'8px'}} /> 创意领域<CaretDownOutlined style={{ fontSize: '8px',marginLeft:'8px' }} />
                 </div>
                 <div className='rectangle-other' >
-                    <ToolOutlined />&nbsp;&nbsp;工具&nbsp;&nbsp;<CaretDownOutlined style={{ fontSize: '8px' }} />
+                        <ToolOutlined style={{ marginRight: '8px' }} />工具<CaretDownOutlined style={{ fontSize: '8px', marginLeft: '8px' }} />
                 </div>
                 <div className='rectangle-other' >
-                    <RadarChartOutlined />&nbsp;&nbsp;颜色&nbsp;&nbsp;<CaretDownOutlined style={{ fontSize: '8px' }} />
+                        <RadarChartOutlined style={{ marginRight: '8px' }} />颜色<CaretDownOutlined style={{ fontSize: '8px', marginLeft: '8px' }} />
                 </div>
                 <div className='rectangle-other' >
-                    <HomeOutlined />&nbsp;&nbsp;位置&nbsp;&nbsp;<CaretDownOutlined style={{ fontSize: '8px' }} />
+                        <HomeOutlined style={{ marginRight: '8px' }} />位置<CaretDownOutlined style={{ fontSize: '8px', marginLeft: '8px' }} />
                 </div>
                 <div className='rectangle-other' >
-                    <ShopOutlined />&nbsp;&nbsp;学校&nbsp;&nbsp;<CaretDownOutlined style={{ fontSize: '8px' }} />
+                        <ShopOutlined style={{ marginRight: '8px' }} />学校<CaretDownOutlined style={{ fontSize: '8px', marginLeft: '8px' }} />
                 </div>
                 <div className='rectangle-other' >
-                    <BarChartOutlined />&nbsp;&nbsp;资源&nbsp;&nbsp;<CaretDownOutlined style={{ fontSize: '8px' }} />
+                        <BarChartOutlined style={{ marginRight: '8px' }} />资源<CaretDownOutlined style={{ fontSize: '8px', marginLeft: '8px' }} />
                 </div>
                 <div className='rectangle-other' >
-                    <TeamOutlined /> &nbsp;&nbsp;订阅&nbsp;&nbsp;<CaretDownOutlined style={{ fontSize: '8px' }} /> 
+                        <TeamOutlined style={{ marginRight: '8px' }} /> 订阅<CaretDownOutlined style={{ fontSize: '8px', marginLeft: '8px' }} /> 
                 </div>
             </div>
 

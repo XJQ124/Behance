@@ -31,13 +31,13 @@
   color:black;
   font-weight: bold;
 }
-
+/* 最外部的 */
 .outer {
   display: flex;
   justify-content: space-between;
   width: 100%;
 }
-
+/* 左边的长方形 */
 .rectangle-container {
   display: flex;
   justify-content: space-between;
