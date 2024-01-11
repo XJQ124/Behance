@@ -58,7 +58,6 @@
 
 .label-mark{
     position: absolute;
-    transition: margin-right 2s ease-in-out;
     height: 50px;
     width: 50px;
     top:-5px;

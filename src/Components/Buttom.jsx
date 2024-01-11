@@ -7,11 +7,11 @@ const Buttom =() =>{
     return (
         <>
                 <div className='buttom'>
-                <div style={{ marginLeft: '20px' }} className='interval'>更多</div>
+                <div style={{ marginLeft: 20}} className='interval'>更多</div>
                 <div>Behance </div>
                 <div className='interval'>
-                    <CaretDownOutlined style={{ fontSize: '8px' }} /> <Divider type="vertical" /> 中文（简体）
-                    <CaretDownOutlined style={{ fontSize: '8px' }} />   <Divider type="vertical" />
+                    <CaretDownOutlined style={{ fontSize: 8 }} /> <Divider type="vertical" /> 中文（简体）
+                    <CaretDownOutlined style={{ fontSize: 8 }} />   <Divider type="vertical" />
                 </div>
                    
                 <div className='interval'>
@@ -32,7 +32,7 @@ const Buttom =() =>{
                 <div className='interval'>  
                     不得出售或共享我的个人信息
                     </div>
-                    <img src={Adobe} alt="adobe" style={{ width: 'auto', height: '30px', marginLeft: '660px' }} />
+                    <img src={Adobe} alt="adobe" style={{ width: 'auto', height: 30, marginLeft: 600 }} />
                 </div>
 
        

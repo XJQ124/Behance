@@ -5,7 +5,7 @@ import Adobe from '../images/Adobe.jpg'
 import '../css/title.css'
 import { Tabs, Button, Input } from 'antd';
 import { SearchOutlined, CaretDownOutlined, RocketOutlined, ToolOutlined, RadarChartOutlined, HomeOutlined, ShopOutlined, BarChartOutlined, TeamOutlined } from '@ant-design/icons';
-
+import _ from 'lodash';
 
 const onChange = (key) => {
     console.log(key);
@@ -32,85 +32,76 @@ const items = [
         label: '职位',
     },
 ];
-
-
-
 const Navigation = () => {
-  
+    const getButtons = ()=>{
+    const texts = ['项目', '资源', '图像', '人物', '原型', '直播', '情绪板']
+    return _.map(texts,(button,index)=>(
+        <Button
+        key={index} 
+        shape='round' 
+        type="text" 
+        className='otherButton'  
+        style={{ marginRight: 10 }}
+        >
+            {button}
+        </Button>
+    ))
+    }
+    const gitDiv = () => {
+        const rectangles = [
+            { icon: <RocketOutlined />, text: '创意领域' },
+            { icon: <ToolOutlined />, text: '工具' },
+            { icon: <RadarChartOutlined />, text: '颜色' },
+            { icon: <HomeOutlined />, text: '位置' },
+            { icon: <ShopOutlined />, text: '学校' },
+            { icon: <BarChartOutlined />, text: '资源' },
+            { icon: <TeamOutlined />, text: '订阅' },
+        ];
+    return _.map(rectangles,(rectangle,index)=>(
+        <div >
+            <div key={index} className='rectangle'>
+                <div style={{ marginRight: 8, marginLeft: 8 }}  >
+                    {rectangle.icon}
+                </div>
+                {rectangle.text}<CaretDownOutlined style={{ fontSize: 8, marginLeft: 8, marginRight: 8 }} />
+            </div>
+        </div> 
+    ))
+    }
     return(
         <>
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-
             <img src={TitleImage} alt="title" className='title' />
-
-                <Tabs defaultActiveKey="1" items={items} onChange={onChange} style={{ marginTop: '3px', marginLeft: '20px' }} />
-
-                <img src={NoteImage} alt='note' className='note' style={{marginLeft:'570px'}}/>
-
+                <Tabs defaultActiveKey="1" items={items} onChange={onChange} style={{ marginTop: 3, marginLeft: 20 }} />
+                <img src={NoteImage} alt='note' className='note' style={{marginLeft:570}}/>
                 <Button shape='round' style={{ color: '#1356f9'}} className='button'>登录</Button>
                 <Button type="primary" shape="round" className='button'>注册</Button>
-
-                <span className='vertical-Line' style={{marginTop:'15px',marginLeft:'20px'}}/>
-
+                <span className='vertical-Line' style={{marginTop:10,marginLeft:10}}/>
                 <Button shape='round' className='button'>
-                    <img src={Color} alt="color" style={{ width: '25px', height: '25px' }} />
+                    <img src={Color} alt="color" style={{ width: 25, height: 25}} />
                     免费试用
                 </Button>
-                <img src={Adobe} alt="adobe" style={{ width: 'auto', height: '40px' }} className='button' />
+                <img src={Adobe} alt="adobe" style={{ width: 'auto', height: 40 }} className='button' />
         </div>
                 <Input addonBefore={<SearchOutlined />} addonAfter={
                     <>
-                        <Button shape='round' type="text" className='roundButton' style={{marginRight:'10px'}}>项目</Button>
-                        <Button shape='round' type="text" className='otherButton' style={{ marginRight: '10px' }} >资源</Button>
-                        <Button shape='round' type="text" className='otherButton' style={{ marginRight: '10px' }} >图像</Button>
-                        <Button shape='round' type="text" className='otherButton' style={{ marginRight: '10px' }} >人物</Button>
-                        <Button shape='round' type="text" className='otherButton' style={{ marginRight: '10px' }} >原型</Button>
-                        <Button shape='round' type="text" className='otherButton' style={{ marginRight: '10px' }} >直播</Button>
-                        <Button shape='round' type="text" className='otherButton' style={{ marginRight: '10px' }} >情绪板</Button>
+                    {getButtons()}
                     </>
-                } placeholder="探索工作中的创意世界" style={{ width: '1405px', height: '40px', marginLeft: '15px'}}  size='large'/>
-
+                } placeholder="探索工作中的创意世界" style={{ width: 1405, height: 40, marginLeft: 15}}  size='large'/>
             <div className='outer'>
-
-            <div className='rectangle-container' style={{marginTop:'25px',marginBottom:'25px',marginLeft:'15px'}}>
-                <div className='rectangle' >
-                    <RocketOutlined style={{marginRight:'8px'}} /> 创意领域<CaretDownOutlined style={{ fontSize: '8px',marginLeft:'8px' }} />
-                </div>
-                <div className='rectangle-other' >
-                        <ToolOutlined style={{ marginRight: '8px' }} />工具<CaretDownOutlined style={{ fontSize: '8px', marginLeft: '8px' }} />
-                </div>
-                <div className='rectangle-other' >
-                        <RadarChartOutlined style={{ marginRight: '8px' }} />颜色<CaretDownOutlined style={{ fontSize: '8px', marginLeft: '8px' }} />
-                </div>
-                <div className='rectangle-other' >
-                        <HomeOutlined style={{ marginRight: '8px' }} />位置<CaretDownOutlined style={{ fontSize: '8px', marginLeft: '8px' }} />
-                </div>
-                <div className='rectangle-other' >
-                        <ShopOutlined style={{ marginRight: '8px' }} />学校<CaretDownOutlined style={{ fontSize: '8px', marginLeft: '8px' }} />
-                </div>
-                <div className='rectangle-other' >
-                        <BarChartOutlined style={{ marginRight: '8px' }} />资源<CaretDownOutlined style={{ fontSize: '8px', marginLeft: '8px' }} />
-                </div>
-                <div className='rectangle-other' >
-                        <TeamOutlined style={{ marginRight: '8px' }} /> 订阅<CaretDownOutlined style={{ fontSize: '8px', marginLeft: '8px' }} /> 
-                </div>
+            <div className='rectangle-container' style={{marginTop:25,marginBottom:25,marginLeft:15}}>
+                        {gitDiv()} 
             </div>
-
-
-                <div style={{ marginTop: '25px', marginBottom: '25px',marginRight:'50px'}}>
-                    
-                <div style={{fontSize:'10px'}}>
+               <div style={{ marginTop: 25, marginBottom: 25,marginRight:50}}>
+                <div style={{fontSize:10}}>
                   分类 
                 </div>
-                    <div style={{ fontSize: '14px' }}>
-                    推荐&nbsp;&nbsp;<CaretDownOutlined style={{ fontSize: '8px'}} />
+                    <div style={{ fontSize: 14}}>
+                    推荐&nbsp;&nbsp;<CaretDownOutlined style={{ fontSize: 8}} />
                 </div>
             </div>
-
             </div>
-
         </>
     )
 }
-
 export default Navigation

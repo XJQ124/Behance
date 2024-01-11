@@ -49,26 +49,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 110px;
+  width: auto;
   height: 36px;
   border-radius: 4px;
   background-color: white;
   border: 1px solid rgba(0, 0, 0, 0.1);;
-  font-size: 14px;
-  font-weight: bold;
-  white-space: nowrap;
-
-}
-/* 其他长方形内容 */
-.rectangle-other{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 80px;
-  height: 36px;
-  border-radius: 4px;
-  background-color: white;
-  border: 1px solid rgba(0, 0, 0, 0.1);
   font-size: 14px;
   font-weight: bold;
   white-space: nowrap;
