@@ -6,6 +6,7 @@ import '../css/title.css'
 import { Tabs, Button, Input } from 'antd';
 import { SearchOutlined, CaretDownOutlined, RocketOutlined, ToolOutlined, RadarChartOutlined, HomeOutlined, ShopOutlined, BarChartOutlined, TeamOutlined } from '@ant-design/icons';
 
+
 const onChange = (key) => {
     console.log(key);
 };
@@ -32,8 +33,10 @@ const items = [
     },
 ];
 
-const Navigation = () => {
 
+
+const Navigation = () => {
+  
     return(
         <>
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
@@ -57,13 +60,13 @@ const Navigation = () => {
         </div>
                 <Input addonBefore={<SearchOutlined />} addonAfter={
                     <>
-                        <Button shape='round' className='roundButton' style={{marginRight:'10px'}}>项目</Button>
-                        <Button shape='round' type="text" className='otherButtton' style={{ marginRight: '10px' }} >资源</Button>
-                        <Button shape='round' type="text" className='otherButtton' style={{ marginRight: '10px' }} >图像</Button>
-                        <Button shape='round' type="text" className='otherButtton' style={{ marginRight: '10px' }} >人物</Button>
-                        <Button shape='round' type="text" className='otherButtton' style={{ marginRight: '10px' }} >原型</Button>
-                        <Button shape='round' type="text" className='otherButtton' style={{ marginRight: '10px' }} >直播</Button>
-                        <Button shape='round' type="text" className='otherButtton' style={{ marginRight: '10px' }} >情绪板</Button>
+                        <Button shape='round' type="text" className='roundButton' style={{marginRight:'10px'}}>项目</Button>
+                        <Button shape='round' type="text" className='otherButton' style={{ marginRight: '10px' }} >资源</Button>
+                        <Button shape='round' type="text" className='otherButton' style={{ marginRight: '10px' }} >图像</Button>
+                        <Button shape='round' type="text" className='otherButton' style={{ marginRight: '10px' }} >人物</Button>
+                        <Button shape='round' type="text" className='otherButton' style={{ marginRight: '10px' }} >原型</Button>
+                        <Button shape='round' type="text" className='otherButton' style={{ marginRight: '10px' }} >直播</Button>
+                        <Button shape='round' type="text" className='otherButton' style={{ marginRight: '10px' }} >情绪板</Button>
                     </>
                 } placeholder="探索工作中的创意世界" style={{ width: '1405px', height: '40px', marginLeft: '15px'}}  size='large'/>
 
