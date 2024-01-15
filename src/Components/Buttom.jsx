@@ -34,9 +34,6 @@ const Buttom =() =>{
                     </div>
                     <img src={Adobe} alt="adobe" style={{ width: 'auto', height: 30, marginLeft: 600 }} />
                 </div>
-
-       
-
         </>
     )
 }

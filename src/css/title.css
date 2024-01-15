@@ -44,12 +44,15 @@
   width: 50%;
   white-space: nowrap;
 }
+
 /* 第一个长方形内容 */
 .rectangle {
+  position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: auto;
+  justify-content: space-between;
+  min-width: 120px;
+  margin-right: 10px;
   height: 36px;
   border-radius: 4px;
   background-color: white;
@@ -57,5 +60,26 @@
   font-size: 14px;
   font-weight: bold;
   white-space: nowrap;
-
 }
+
+.rectangle:focus {
+  border-color: #005cff;
+}
+
+/* 方框动画开始 */
+.rectangle:focus .rectangle-text {
+    transform: translate(-32px, -18px);
+    font-size: 10px;
+    transition: 0.1s;
+    background-color: #fff;
+    /* 堆叠顺序 */
+    z-index: 99999;
+    padding: 0 3px;
+}
+/* 方框动画变回来 */
+.rectangle.expanded:focus .rectangle-text {
+  transform: translate(0, 0);
+  font-size: 14px;
+  transition: 0.1s;
+}
+

@@ -6,6 +6,7 @@ import '../css/title.css'
 import { Tabs, Button, Input } from 'antd';
 import { SearchOutlined, CaretDownOutlined, RocketOutlined, ToolOutlined, RadarChartOutlined, HomeOutlined, ShopOutlined, BarChartOutlined, TeamOutlined } from '@ant-design/icons';
 import _ from 'lodash';
+import { useState } from 'react';
 
 const onChange = (key) => {
     console.log(key);
@@ -33,21 +34,25 @@ const items = [
     },
 ];
 const Navigation = () => {
-    const getButtons = ()=>{
-    const texts = ['项目', '资源', '图像', '人物', '原型', '直播', '情绪板']
-    return _.map(texts,(button,index)=>(
-        <Button
-        key={index} 
-        shape='round' 
-        type="text" 
-        className='otherButton'  
-        style={{ marginRight: 10 }}
-        >
-            {button}
-        </Button>
-    ))
+    const GetButtons = () => {
+        const texts = ['项目', '资源', '图像', '人物', '原型', '直播', '情绪板']
+        return _.map(texts, (button, index) => (
+            <Button
+                key={index}
+                shape='round'
+                type="text"
+                className='otherButton'
+                style={{ marginRight: 10 }}
+            >
+                {button}
+            </Button>
+        ))
     }
-    const gitDiv = () => {
+    const GitDiv = () => {
+        const [expand, setExpand] = useState(true)
+        const toggle = (index) => {
+            setExpand(prevIndex => (prevIndex === index ? true : index));
+        };
         const rectangles = [
             { icon: <RocketOutlined />, text: '创意领域' },
             { icon: <ToolOutlined />, text: '工具' },
@@ -57,49 +62,53 @@ const Navigation = () => {
             { icon: <BarChartOutlined />, text: '资源' },
             { icon: <TeamOutlined />, text: '订阅' },
         ];
-    return _.map(rectangles,(rectangle,index)=>(
-        <div >
-            <div key={index} className='rectangle'>
-                <div style={{ marginRight: 8, marginLeft: 8 }}  >
-                    {rectangle.icon}
-                </div>
-                {rectangle.text}<CaretDownOutlined style={{ fontSize: 8, marginLeft: 8, marginRight: 8 }} />
-            </div>
-        </div> 
-    ))
+        return _.map(rectangles, (rectangle, index) => (
+            <button
+                className={`rectangle ${expand === index ? 'expanded' : ''}`}
+
+                onClick={() => toggle(index)}
+                onFocus={() => setExpand(index)} 
+                key={index}
+    
+            >
+                <div style={{ marginRight: 8, marginLeft: 8 }} >{rectangle.icon}</div>
+                <div className='rectangle-text'>{rectangle.text}</div>
+                <CaretDownOutlined style={{ fontSize: 8, marginLeft: 8, marginRight: 8, transform: `rotate(${expand === index ? 180 : 0}deg)` }} />
+            </button>
+        ))
     }
-    return(
+    return (
         <>
-        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-            <img src={TitleImage} alt="title" className='title' />
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <img src={TitleImage} alt="title" className='title' />
                 <Tabs defaultActiveKey="1" items={items} onChange={onChange} style={{ marginTop: 3, marginLeft: 20 }} />
-                <img src={NoteImage} alt='note' className='note' style={{marginLeft:570}}/>
-                <Button shape='round' style={{ color: '#1356f9'}} className='button'>登录</Button>
+                <img src={NoteImage} alt='note' className='note' style={{ marginLeft: 570 }} />
+                <Button shape='round' style={{ color: '#1356f9' }} className='button'>登录</Button>
                 <Button type="primary" shape="round" className='button'>注册</Button>
-                <span className='vertical-Line' style={{marginTop:10,marginLeft:10}}/>
+                <span className='vertical-Line' style={{ marginTop: 10, marginLeft: 10 }} />
                 <Button shape='round' className='button'>
-                    <img src={Color} alt="color" style={{ width: 25, height: 25}} />
+                    <img src={Color} alt="color" style={{ width: 25, height: 25 }} />
                     免费试用
                 </Button>
                 <img src={Adobe} alt="adobe" style={{ width: 'auto', height: 40 }} className='button' />
-        </div>
-                <Input addonBefore={<SearchOutlined />} addonAfter={
-                    <>
-                    {getButtons()}
-                    </>
-                } placeholder="探索工作中的创意世界" style={{ width: 1405, height: 40, marginLeft: 15}}  size='large'/>
+            </div>
+            <Input addonBefore={<SearchOutlined />} addonAfter={
+                <>
+                    {GetButtons()}
+                </>
+            } placeholder="探索工作中的创意世界" style={{ width: 1405, height: 40, marginLeft: 15 }} size='large' />
             <div className='outer'>
-            <div className='rectangle-container' style={{marginTop:25,marginBottom:25,marginLeft:15}}>
-                        {gitDiv()} 
-            </div>
-               <div style={{ marginTop: 25, marginBottom: 25,marginRight:50}}>
-                <div style={{fontSize:10}}>
-                  分类 
+                <div className='rectangle-container' style={{ marginTop: 25, marginBottom: 25, marginLeft: 15 }}>
+                    {GitDiv()}
                 </div>
-                    <div style={{ fontSize: 14}}>
-                    推荐&nbsp;&nbsp;<CaretDownOutlined style={{ fontSize: 8}} />
+                <div style={{ marginTop: 25, marginBottom: 25, marginRight: 50 }}>
+                    <div style={{ fontSize: 10 }}>
+                        分类
+                    </div>
+                    <div style={{ fontSize: 14 }}>
+                        推荐&nbsp;&nbsp;<CaretDownOutlined style={{ fontSize: 8 }} />
+                    </div>
                 </div>
-            </div>
             </div>
         </>
     )

@@ -43,17 +43,14 @@ const PhotoGallery = () => {
                             <div >
                                 <div className='mark'>
                                     <div>
-                                        
                                         <img src={photo.src} alt={'这是图片'} style={{height:'100%', width: '100%', borderRadius: 4,display:'block' }} />
                                         <Button  shape='round' className='button-mark' >
                                             <FolderFilled />
                                             <div style={{ writingMode: 'vertical-rl' }}>保存</div>
                                         </Button>
                                         <img src={Label} alt={'图标'} className='label-mark'/>
-
                                     </div>   
                                 </div>
-
                                 <div className='layout'>
                                     <div className='title2' >{photo.title} </div>
                                     <div className='icons' > <img src={Good} alt='Good' style={{ height: 20}} />{photo.likes}</div>
