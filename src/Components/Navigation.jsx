@@ -3,10 +3,11 @@ import NoteImage from '../images/notifications.jpg';
 import Color from '../images/color.jpg'
 import Adobe from '../images/Adobe.jpg'
 import '../css/title.css'
-import { Tabs, Button, Input } from 'antd';
+import { Tabs, Button, Input, Popover, Divider, Select } from 'antd';
 import { SearchOutlined, CaretDownOutlined, RocketOutlined, ToolOutlined, RadarChartOutlined, HomeOutlined, ShopOutlined, BarChartOutlined, TeamOutlined } from '@ant-design/icons';
 import _ from 'lodash';
 import { useState } from 'react';
+import { SwatchesPicker } from 'react-color';
 
 const onChange = (key) => {
     console.log(key);
@@ -48,33 +49,220 @@ const Navigation = () => {
             </Button>
         ))
     }
+    
     const GitDiv = () => {
-        const [expand, setExpand] = useState(true)
+        const [expand, setExpand] = useState(null)
+        const [rotate, setRotate] = useState(false)
+        const [curIndex, setCurIndex] = useState(null)
         const toggle = (index) => {
+            console.log('toggle', index)
+            setCurIndex(index)
+            setRotate(preRotate => !preRotate)
             setExpand(prevIndex => (prevIndex === index ? true : index));
         };
+        //Popover里的内容以及是否可见
+        const [visiblePopover, setVisiblePopover] = useState(null)
+        const handlePopover = (index, visible) => {
+            if (visible) {
+                setVisiblePopover(index)
+            } else {
+                setVisiblePopover(null)
+            }
+        }
+        //颜色选择器
+        const ColorPickerComponent = () => {
+            const [selectedColor, setSelectedColor] = useState('#ffffff');
+            const handleColorChange = (color) => {
+                setSelectedColor(color.hex);
+            };
+            return (
+                <div>
+                    <SwatchesPicker
+                        color={selectedColor}
+                        onChange={handleColorChange}
+                    />
+                </div>
+            );
+        };
+        const options = [
+            {
+                value: '1',
+                label: '选择国家/地区',
+            },
+            {
+                value: '2',
+                label: 'Closed',
+            },
+            {
+                value: '3',
+                label: 'Communicated',
+            },
+            {
+                value: '4',
+                label: 'Identified',
+            },
+            {
+                value: '5',
+                label: 'Resolved',
+            },
+            {
+                value: '6',
+                label: 'Cancelled',
+            },
+            {
+                value: '7',
+                label: 'Not Identified',
+            },
+            {
+                value: '8',
+                label: 'Closed',
+            },
+            {
+                value: '9',
+                label: 'Communicated',
+            },
+            {
+                value: '10',
+                label: 'Identified',
+            },
+            {
+                value: '11',
+                label: 'Resolved',
+            },
+            {
+                value: '12',
+                label: 'Cancelled',
+            },
+        ]
+        //选择框禁止
+        const [selectedCountry, setSelectedCountry] = useState(null);
+        const handleChangeCountry = (value) => {
+            // 更新选中的国家
+            setSelectedCountry(value);
+        };
+        //清除按钮方法
+        const handleClear = () => {
+            setSelectedCountry(null); // 清除已选择的国家
+            setVisiblePopover(null); // 关闭 Popover
+        };
+        //取消按钮方法
+        const handleCanecl = () => {
+            setVisiblePopover(null);
+        }
         const rectangles = [
             { icon: <RocketOutlined />, text: '创意领域' },
-            { icon: <ToolOutlined />, text: '工具' },
-            { icon: <RadarChartOutlined />, text: '颜色' },
-            { icon: <HomeOutlined />, text: '位置' },
-            { icon: <ShopOutlined />, text: '学校' },
-            { icon: <BarChartOutlined />, text: '资源' },
-            { icon: <TeamOutlined />, text: '订阅' },
+            {
+                icon: <ToolOutlined />, text: '工具', content: (
+                    <div style={{ marginLeft: 30, marginRight: 30 }}>
+                        <div className='rectangle-font' style={{ marginBottom: 5 }}>
+                            搜素工具
+                        </div>
+                        <Input placeholder="开始键入以查看列表" style={{ width: 370 }} />
+                        <div className='rectangle-font' style={{ marginTop: 30 }}>
+                            热门工具
+                        </div>
+                        <div className='font-padding'>
+                            Adobe Photoshop
+                        </div>
+                        <div className='font-padding'>
+                            Adobe Illustrator
+                        </div>
+                        <div className='font-padding'>
+                            Adobe InDesign
+                        </div>
+                        <div className='font-padding'>
+                            Adobe After Effect
+                        </div>
+                        <div className='font-padding'>
+                            Adobe Photoshop Lightroom
+                        </div>
+                    </div >)
+            },
+            {
+                icon: <RadarChartOutlined />, text: '颜色', content: (
+                    <>
+                        <ColorPickerComponent />
+                    </>
+                )
+            },
+            {
+                icon: <HomeOutlined />, text: '位置', content: (
+                    <>
+                        <div className='input-local' >
+                            <div className='input-state'>
+                                国家/地区
+                            </div>
+                            <div>
+                                <Select
+                                    showSearch
+                                    style={{
+                                        width: 180,
+                                    }}
+                                    placeholder="选择国家/地区"
+                                    options={options}
+                                    onChange={handleChangeCountry}
+                                    value={selectedCountry}
+                                />
+                            </div>
+                        </div>
+                        <div className='input-local' style={{ marginTop: 10 }}>
+                            <div className='input-citys'>
+                                城市
+                            </div >
+                            <div>
+                                <Input disabled={!selectedCountry} />
+                            </div>
+                        </div>
+                        <Divider />
+                        <div style={{ marginLeft: 10 }} >
+                            <Button type="text" onClick={handleCanecl}>取消</Button>
+                            {/* 清除按钮 */}
+                            {selectedCountry && (
+                                <Button type="text" onClick={handleClear}>
+                                    清除筛选条件
+                                </Button>
+                            )}
+                            <Button type="primary" shape="round" >应用筛选器</Button>
+                        </div>
+                    </>
+                )
+            },
+            { icon: <ShopOutlined />, text: '学校', content: '学校的内容' },
+            { icon: <BarChartOutlined />, text: '资源', content: '资源的内容' },
+            { icon: <TeamOutlined />, text: '订阅', content: '订阅的内容' },
         ];
+        console.log('expand', expand)
         return _.map(rectangles, (rectangle, index) => (
-            <button
-                className={`rectangle ${expand === index ? 'expanded' : ''}`}
-
-                onClick={() => toggle(index)}
-                onFocus={() => setExpand(index)} 
+            <Popover
                 key={index}
-    
+                arrow={false}
+                content={rectangle.content}//显示对应的内容
+                placement="bottomLeft"
+                // 这个是让他点击才显示
+                trigger="click" 
+                open={visiblePopover === index}
+                onOpenChange={(visible) => handlePopover(index, visible)}
+                style={{ whiteSpace: 'nowrap', }}
             >
-                <div style={{ marginRight: 8, marginLeft: 8 }} >{rectangle.icon}</div>
-                <div className='rectangle-text'>{rectangle.text}</div>
-                <CaretDownOutlined style={{ fontSize: 8, marginLeft: 8, marginRight: 8, transform: `rotate(${expand === index ? 180 : 0}deg)` }} />
-            </button>
+                <Button
+                    className={`rectangle ${expand === index ? 'expanded' : ''}`}
+                    onClick={() => toggle(index)}
+                    onFocus={() => {
+                        console.log('onFocus', index)
+                        setExpand(index)
+                    }}  // 处理焦点时的状态变化
+                    key={index}
+                    onBlur={() => {
+                        setRotate(false)
+                        setCurIndex(null)
+                    }}
+                >
+                    <div style={{ marginRight: 8, marginLeft: 8 }} >{rectangle.icon}</div>
+                    {/* 按钮内文字的变化 */}
+                    <div className='rectangle-text'>{rectangle.text}</div>  
+                    <CaretDownOutlined style={{ fontSize: 8, marginLeft: 8, marginRight: 8, transform: `rotate(${(rotate && curIndex === index) ? 180 : 0}deg)` }} />
+                </Button>
+            </Popover>
         ))
     }
     return (

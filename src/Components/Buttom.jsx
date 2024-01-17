@@ -21,7 +21,7 @@ const Buttom =() =>{
                     隐私 
                     </div>
                 <div className='interval'>
-                     社区 
+                    社区 
                     </div>
                 <div className='interval'>
                     帮助 
